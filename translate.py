@@ -1,4 +1,3 @@
-!pip install googletrans
 
 import streamlit as st
 from googletrans import Translator
