@@ -1,37 +1,24 @@
-
 import streamlit as st
-from googletrans import Translator
+import whisper
+import tempfile
 
-translator = Translator()
 
-st.title("Google Translate in Streamlit")
+st.title("Audio Transcription and Translation with Whisper")
 
-text = st.text_input("Enter text to translate:")
+model = whisper.load_model("base")
 
-if text:
-    language = st.selectbox("Select language to translate to:",
-                            ["Arabic", "German", "Spanish", "French", "Italian", "Japanese", "Korean", "Russian"])
+audio_file = st.file_uploader("Choose a file", type= ["wav","mp3","m4a"])
+if audio_file is not None:
+    with tempfile.NamedTemporaryFile(delete=False) as temp:
+        temp.write(audio_file.getbuffer())
+        st.success("Saved File")
 
-    if language == "Arabic":
-        dest = "ar"
-    elif language == "German":
-        dest = "de"
-    elif language == "Spanish":
-        dest = "es"
-    elif language == "French":
-        dest = "fr"
-    elif language == "Italian":
-        dest = "it"
-    elif language == "Japanese":
-        dest = "ja"
-    elif language == "Korean":
-        dest = "ko"
-    elif language == "Russian":
-        dest = "ru"
-    else:
-        dest = "en"
-
-    translated_text = translator.translate(text, dest=dest).text
-
-    st.write("Translated Text:")
-    st.write(translated_text)
+        if st.sidebar.button("Transcribe"):
+            if audio_file is not None:
+                st.sidebar.text("Transcribing...")
+                st.sidebar.text(temp.name)
+                transcript = model.transcribe(temp.name)
+                st.sidebar.success("Transcription complete")
+                st.write(transcript["text"])
+            else:
+                st.error("Please Upload an Audio File")
