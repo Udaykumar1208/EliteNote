@@ -1,1 +1,7 @@
-googletrans
+streamlit
+git+https://github.com/openai/whisper.git 
+numpy
+pandas
+
+
+
