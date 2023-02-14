@@ -7,7 +7,7 @@ st.title("Audio Transcription and Translation with Whisper")
 
 model = whisper.load_model("base")
 
-audio_file = st.file_uploader("Choose a file", type= ["wav","mp3","m4a"])
+audio_file =  st.file_uploader("Choose your database", accept_multiple_files=False , type= ["wav","mp3","m4a"])
 if audio_file is not None:
     with tempfile.NamedTemporaryFile(delete=False) as temp:
         temp.write(audio_file.getbuffer())
