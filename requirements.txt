@@ -10,6 +10,6 @@ git+https://github.com/openai/whisper.git
 pydub
 pytube
 regex
-os
+
 keybert
 googletrans
