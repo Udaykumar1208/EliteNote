@@ -163,10 +163,10 @@ if __name__ == "__main__":
 #                                                                                                                                                               #
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
-url = st.text_input("Enter the URL: ")
-st.warning("Make sure that URL can access anyone...")
-st.button("Submit")
-st.markdown("---")
+url = col2.text_input("Enter the URL: ")
+col2.warning("Make sure that URL can access anyone...")
+col2.button("Submit")
+
 url_type = verify_url(url)
 
 #------------------------------------------------------------## if it is a Youtube URL ##----------------------------------------------------------------------------
