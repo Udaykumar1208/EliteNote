@@ -13,3 +13,4 @@ regex
 
 keybert
 googletrans
+tenserflow
