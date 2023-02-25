@@ -192,7 +192,7 @@ if url_type == "youtube":
                     st.sidebar.markdown("<h1 style='text-align: left; color: red; font-size: 15px;'>Features</h1>", unsafe_allow_html=True)
                     transcribe_cb = st.sidebar.checkbox("transcript") 
                     translate_button = st.sidebar.checkbox("translation")    
-                    summarize_button = st.sidebar.checkbox("Summarize")             
+                    summarize_button = st.sidebar.checkbox("Summarize_text")             
                     keyword_button = st.sidebar.checkbox("Keywords")
 #-----------------------------------------------------------------## Transcribing the audio file (refer utils.py) ##-----------------------------
                     if transcribe_cb:
