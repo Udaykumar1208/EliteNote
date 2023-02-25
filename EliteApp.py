@@ -126,7 +126,7 @@ def main():
                 except RuntimeError:
                         result = None
                         st.warning("Oops! Someone else is using the model right now to transcribe another video. Please try again in a few seconds.")
-                data = result['text'].strip()
+                data = result['text']
                                 
                 ratio = st.slider("Summarization fraction", min_value=0.0, max_value=1.0, value=0.2, step=0.01)
                 summarized_text = summarizer.summarize(data, ratio=ratio, language="english", split=True, scores=True)
@@ -262,7 +262,7 @@ if url_type == "youtube":
                                 result = None
                                 st.warning("Oops! Someone else is using the model right now to transcribe another video. Please try again in a few seconds.")
                                 
-                            data = result['text'].strip()
+                            data = result['text']
                                 
                             ratio = st.slider("Summarization fraction", min_value=0.0, max_value=1.0, value=0.2, step=0.01)
                             summarized_text = summarizer.summarize(data, ratio=ratio, language="english", split=True, scores=True)
@@ -382,7 +382,7 @@ elif url_type == "drive":
                         st.warning("Oops! Someone else is using the model right now to transcribe another video. Please try again in a few seconds.")
                         
                         
-                    data = result['text'].strip()
+                    data = result['text']
                                     
                     ratio = st.slider("Summarization fraction", min_value=0.0, max_value=1.0, value=0.2, step=0.01)
                     summarized_text = summarizer.summarize(data, ratio=ratio, language="english", split=True, scores=True)
