@@ -20,6 +20,7 @@ import time
 from utils import *
 import googletrans
 translator = googletrans.Translator()
+from summa import summarizer
 
 ##----------------------------------------------------------------## Saving Files Path--------------------------------------------------------------------------------
 upload_path = "uploads/"
@@ -127,12 +128,12 @@ def main():
                         st.warning("Oops! Someone else is using the model right now to transcribe another video. Please try again in a few seconds.")
                 data = result['text'].strip()
                                 
-                    
-                summary_points = point_wise_summary(data)
-            
-                for point in summary_points:
-                    st.markdown(f'<p style="padding: 10px; text-align: left; color:lightblack; background:#FFFACD ; font-size:15px; margin : 15px auto;">{"❖" + point}</p>', unsafe_allow_html=True)
-        
+                 ratio = st.slider("Summarization fraction", min_value=0.0, max_value=1.0, value=0.2, step=0.01)
+                summarized_text = summarizer.summarize(data, ratio=ratio, language="english", split=True, scores=True)
+                
+                for sentence, score in summarized_text:
+                    st.write(sentence)
+                 
         if keyword_btn:
             st.markdown("<h3 style= 'color: red;'>Keyword Extraction:</h3>", unsafe_allow_html=True)
             with st.spinner(f"Generating Krywords... 💫"):
@@ -263,12 +264,12 @@ if url_type == "youtube":
                                 
                             data = result['text'].strip()
                                 
-                    
-                            summary_points = point_wise_summary(data)
-            
-                            for point in summary_points:
-                                st.markdown(f'<p style="padding: 10px; text-align: left; color:lightblack; background:#FFFACD ; font-size:15px; margin : 15px auto;">{"❖" + point}</p>', unsafe_allow_html=True)
-                    
+                            ratio = st.slider("Summarization fraction", min_value=0.0, max_value=1.0, value=0.2, step=0.01)
+                            summarized_text = summarizer.summarize(data, ratio=ratio, language="english", split=True, scores=True)
+                            
+                            for sentence, score in summarized_text:
+                                st.write(sentence)
+                             
                     if keyword_button:
                         st.markdown("<h3 style= 'color: red;'>Keywords Extraction:</h3>", unsafe_allow_html=True)
                         with st.spinner(f"Generating keywords... 💫"):
@@ -383,12 +384,12 @@ elif url_type == "drive":
                         
                     data = result['text'].strip()
                                     
-                    
-                    summary_points = point_wise_summary(data)
-                
-                    for point in summary_points:
-                        st.markdown(f'<p style="padding: 10px; text-align: left; color:lightblack; background:#FFFACD ; font-size:15px; margin : 15px auto;">{"❖" + point}</p>', unsafe_allow_html=True)
-            
+                    ratio = st.slider("Summarization fraction", min_value=0.0, max_value=1.0, value=0.2, step=0.01)
+                    summarized_text = summarizer.summarize(data, ratio=ratio, language="english", split=True, scores=True)
+                            
+                    for sentence, score in summarized_text:
+                       st.write(sentence)
+                                       
                 if keyword_cb:
                     st.markdown("<h3 style= 'color: red;'>Keywords Extraction:</h3>", unsafe_allow_html=True)
                     with st.spinner(f"Generating Keywords... 💫"):
