@@ -34,6 +34,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 
+@st.cache_data(suppress_st_warning=True)
+
 def send_email(name, email, feedback):
     sender_email = 'billauday9901@gmail.com'
     sender_password = 'UDAYKUMAR1234'
