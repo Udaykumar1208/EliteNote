@@ -10,7 +10,10 @@ git+https://github.com/openai/whisper.git
 pydub
 pytube
 regex
-
 keybert
 googletrans==3.1.0a0
 summa
+
+
+smtplib
+email
