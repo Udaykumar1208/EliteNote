@@ -180,7 +180,7 @@ def main():
     if st.button('Give Feedback'):
         feedback_page()                    
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------#        
-@st.cache(suppress_st_warning=True)
+@st.cache_data(ignore_hash=True)
 def feedback_page():
     st.title('Feedback Form')
     st.write('Please enter your feedback below:')
