@@ -178,8 +178,7 @@ def send_email(name, email, feedback):
     server.quit()
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------#   
-@st.cache
-
+@st.cache_data(show_spinner=False)
 def feedback_page():
     st.title('Feedback Form')
     st.write('Please enter your feedback below:')
