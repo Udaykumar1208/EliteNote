@@ -34,7 +34,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 
-@st.cache_data(suppress_st_warning=True)
+
 
 def send_email(name, email, feedback):
     sender_email = 'billauday9901@gmail.com'
@@ -180,7 +180,7 @@ def main():
     if st.button('Give Feedback'):
         feedback_page()                    
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------#        
-
+@st.cache(suppress_st_warning=True)
 def feedback_page():
     st.title('Feedback Form')
     st.write('Please enter your feedback below:')
