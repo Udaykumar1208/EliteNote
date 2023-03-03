@@ -31,7 +31,7 @@ transcript_path = "transcripts/"
 ##--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 st.markdown("<h1 style='text-align: center; color: red; font-size: 55px;'>Elite Notes</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='padding: 10px; text-align: center; color: lightblack; font-size: 15px; margin : 15px auto;'>At EliteNotes, we believe everyone is a note-taker because every conversation matters</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='padding: 10px; text-align: center; color: lightblack; font-size: 15px; margin : 15px auto;'>Your AI-virtual Assistant</h1>", unsafe_allow_html=True)
 st.markdown("---")
 st.markdown("<h3 style= 'color: red;'>Audio Transcribe</h3>", unsafe_allow_html=True)
 
