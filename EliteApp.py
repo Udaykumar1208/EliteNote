@@ -421,4 +421,4 @@ elif url_type == "drive":
     if __name__ == "__main__":
         main()
     else:
-        st.warning("Please Upload an audio file or URL")
+        st.warning("")
