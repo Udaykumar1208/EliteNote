@@ -42,7 +42,7 @@ uploaded_file = col1.file_uploader("Upload audio file", type=["wav","mp3","ogg",
 # # st.audio(uploaded_file)  
 st.markdown("---")
 ##--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+@st.cache
 def main():
     model =  load_whisper_model() 
     if uploaded_file:
