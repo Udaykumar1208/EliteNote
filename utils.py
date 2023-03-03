@@ -178,7 +178,7 @@ def send_email(name, email, feedback):
     server.quit()
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------#   
-@st.cache_data(ignore_hash=True)
+@st.cache_data
 
 def feedback_page():
     st.title('Feedback Form')
