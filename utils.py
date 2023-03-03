@@ -151,42 +151,42 @@ def point_wise_summary(data):
 
 
 
-#---------------------------------------------------------------------------------------------------------------------------------------------------------------#        
-##-------------------------------------------------------## Feedback ##----------------------------------------------------------------##
+# #---------------------------------------------------------------------------------------------------------------------------------------------------------------#        
+# ##-------------------------------------------------------## Feedback ##----------------------------------------------------------------##
 
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from email.mime.application import MIMEApplication
+# import smtplib
+# from email.mime.text import MIMEText
+# from email.mime.multipart import MIMEMultipart
+# from email.mime.application import MIMEApplication
 
 
 
-def send_email(name, email, feedback):
-    sender_email = 'billauday9901@gmail.com'
-    sender_password = 'UDAYKUMAR1234'
-    receiver_email = 'bodakiran9652@gmail.com'
-    message = MIMEMultipart()
-    message['From'] = sender_email
-    message['To'] = receiver_email
-    message['Subject'] = 'New Feedback from {} ({})'.format(name, email)
-    message.attach(MIMEText(feedback, 'plain'))
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(sender_email, sender_password)
-    text = message.as_string()
-    server.sendmail(sender_email, receiver_email, text)
-    server.quit()
+# def send_email(name, email, feedback):
+#     sender_email = 'billauday9901@gmail.com'
+#     sender_password = 'UDAYKUMAR1234'
+#     receiver_email = 'bodakiran9652@gmail.com'
+#     message = MIMEMultipart()
+#     message['From'] = sender_email
+#     message['To'] = receiver_email
+#     message['Subject'] = 'New Feedback from {} ({})'.format(name, email)
+#     message.attach(MIMEText(feedback, 'plain'))
+#     server = smtplib.SMTP('smtp.gmail.com', 587)
+#     server.starttls()
+#     server.login(sender_email, sender_password)
+#     text = message.as_string()
+#     server.sendmail(sender_email, receiver_email, text)
+#     server.quit()
 
-#---------------------------------------------------------------------------------------------------------------------------------------------------------------#   
-@st.cache_data(show_spinner=False)
-def feedback_page():
-    st.title('Feedback Form')
-    with st.form(key='feedback_form'):
-        name = st.text_input('Name')
-        email = st.text_input('Email')
-        feedback = st.text_area('Feedback')
-        if st.form_submit_button('Submit'):
-            if name and email and feedback:
-                send_email(name, email, feedback)
-                st.write('Thank you for your feedback!')
+# #---------------------------------------------------------------------------------------------------------------------------------------------------------------#   
+# @st.cache_data(show_spinner=False)
+# def feedback_page():
+#     st.title('Feedback Form')
+#     with st.form(key='feedback_form'):
+#         name = st.text_input('Name')
+#         email = st.text_input('Email')
+#         feedback = st.text_area('Feedback')
+#         if st.form_submit_button('Submit'):
+#             if name and email and feedback:
+#                 send_email(name, email, feedback)
+#                 st.write('Thank you for your feedback!')
 
