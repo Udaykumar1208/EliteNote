@@ -15,5 +15,5 @@ googletrans==3.1.0a0
 summa
 
 
-smtplib
+secure-smtplib
 email
