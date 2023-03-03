@@ -175,7 +175,7 @@ def main():
                     st.write("▣ ",items[0])
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------#        
 
-    if st.sidebar.button('Give Feedback'):
+    if st.button('Give Feedback'):
         feedback_page()                    
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------#        
 
@@ -185,7 +185,7 @@ def feedback_page():
     name = st.text_input('Name')
     email = st.text_input('Email')
     feedback = st.text_area('Feedback')
-    if st.button('Submit'):
+    if st.button('Proceed'):
         send_email(name, email, feedback)
         st.write('Thank you for your feedback!')
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------#        
@@ -200,7 +200,7 @@ if __name__ == "__main__":
 
 url = col2.text_input("Enter the URL: ")
 col2.warning("Make sure that Google Drive URL can access anyone...")
-col2.checkbox("Submit")
+col2.button("Submit")
 
 url_type = verify_url(url)
 
