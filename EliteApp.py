@@ -200,7 +200,7 @@ if __name__ == "__main__":
 
 url = col2.text_input("Enter the URL: ")
 col2.warning("Make sure that Google Drive URL can access anyone...")
-col2.button("Submit")
+col2.checkbox("Submit")
 
 url_type = verify_url(url)
 
