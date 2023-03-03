@@ -187,6 +187,7 @@ def feedback_page():
     email = st.text_input('Email')
     feedback = st.text_area('Feedback')
     if st.button('Proceed'):
-        send_email(name, email, feedback)
-        st.write('Thank you for your feedback!')
+        if name and email and feedback:
+            send_email(name, email, feedback)
+            st.write('Thank you for your feedback!')
 
