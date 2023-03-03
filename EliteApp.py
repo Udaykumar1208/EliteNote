@@ -420,5 +420,4 @@ elif url_type == "drive":
 
     if __name__ == "__main__":
         main()
-else:
-    st.error("Invalid URL.")
+)
