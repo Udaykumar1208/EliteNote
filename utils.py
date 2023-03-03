@@ -181,12 +181,12 @@ def send_email(name, email, feedback):
 @st.cache_data(show_spinner=False)
 def feedback_page():
     st.title('Feedback Form')
-    st.write('Please enter your feedback below:')
-    name = st.text_input('Name')
-    email = st.text_input('Email')
-    feedback = st.text_area('Feedback')
-    if st.button('Proceed'):
-        if name and email and feedback:
-            send_email(name, email, feedback)
-            st.write('Thank you for your feedback!')
+    with st.form(key='feedback_form'):
+        name = st.text_input('Name')
+        email = st.text_input('Email')
+        feedback = st.text_area('Feedback')
+        if st.form_submit_button('Submit'):
+            if name and email and feedback:
+                send_email(name, email, feedback)
+                st.write('Thank you for your feedback!')
 
