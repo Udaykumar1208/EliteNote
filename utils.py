@@ -12,7 +12,7 @@ MAX_VIDEO_LENGTH = 30*60
 
 ##----------------------------------{Youtube Part}----------------------------------------------------------------------------------------------------------------------------------
 
-@st.cache_data(show_spinner=False)
+@st.cache (show_spinner=False)
 def load_whisper_model():
     model = whisper.load_model('base', device='cpu')
     return model
@@ -54,9 +54,7 @@ def _whisper_result_to_srt(result):
     return "\n".join(text)
 
 ##--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@st.cache_data
-
-# @st.cache_data(show_spinner=False, max_entries=1)
+@st.cache_data(show_spinner=False, max_entries=1)
 def transcribe_URL(_model, url):
     
     url_type = verify_url(url)
@@ -76,8 +74,7 @@ def transcribe_URL(_model, url):
         return result
 
 ##--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@st.cache_data
-# @st.cache_data(persist=True,allow_output_mutation=False,show_spinner=True,suppress_st_warning=True)
+@st.cache_data(persist=True,allow_output_mutation=False,show_spinner=True,suppress_st_warning=True)
 
 def verify_url(url):
     youtube_pattern = re.compile(r'^(https?://)?(www\.)?(youtube\.com|youtu\.?be)/.+$')
@@ -129,8 +126,7 @@ def get_audio_from_Upload(uploaded_file):
         with open(os.path.join(upload_path, uploaded_file.name),"wb") as f:
             f.write((uploaded_file).getbuffer())
 
-@st.cache_data   
-# @st.experimental_memo(show_spinner=False, max_entries=1)
+@st.experimental_memo(show_spinner=False, max_entries=1)
 def transcribe_audio(_model, uploaded_file):
     get_audio_from_Upload(uploaded_file)
     options = whisper.DecodingOptions(language='en', fp16=False)
@@ -148,45 +144,4 @@ def point_wise_summary(data):
     summary_text = summary[0]["summary_text"]
     points = summary_text.split(".")
     return [point for point in points]
-
-
-
-# #---------------------------------------------------------------------------------------------------------------------------------------------------------------#        
-# ##-------------------------------------------------------## Feedback ##----------------------------------------------------------------##
-
-# import smtplib
-# from email.mime.text import MIMEText
-# from email.mime.multipart import MIMEMultipart
-# from email.mime.application import MIMEApplication
-
-
-
-# def send_email(name, email, feedback):
-#     sender_email = 'billauday9901@gmail.com'
-#     sender_password = 'UDAYKUMAR1234'
-#     receiver_email = 'bodakiran9652@gmail.com'
-#     message = MIMEMultipart()
-#     message['From'] = sender_email
-#     message['To'] = receiver_email
-#     message['Subject'] = 'New Feedback from {} ({})'.format(name, email)
-#     message.attach(MIMEText(feedback, 'plain'))
-#     server = smtplib.SMTP('smtp.gmail.com', 587)
-#     server.starttls()
-#     server.login(sender_email, sender_password)
-#     text = message.as_string()
-#     server.sendmail(sender_email, receiver_email, text)
-#     server.quit()
-
-# #---------------------------------------------------------------------------------------------------------------------------------------------------------------#   
-# @st.cache_data(show_spinner=False)
-# def feedback_page():
-#     st.title('Feedback Form')
-#     with st.form(key='feedback_form'):
-#         name = st.text_input('Name')
-#         email = st.text_input('Email')
-#         feedback = st.text_area('Feedback')
-#         if st.form_submit_button('Submit'):
-#             if name and email and feedback:
-#                 send_email(name, email, feedback)
-#                 st.write('Thank you for your feedback!')
 
