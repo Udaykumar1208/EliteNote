@@ -12,7 +12,7 @@ MAX_VIDEO_LENGTH = 30*60
 
 ##----------------------------------{Youtube Part}----------------------------------------------------------------------------------------------------------------------------------
 
-@st.cache (show_spinner=False)
+st.cache_resource(show_spinner=False)
 def load_whisper_model():
     model = whisper.load_model('base', device='cpu')
     return model
@@ -54,7 +54,7 @@ def _whisper_result_to_srt(result):
     return "\n".join(text)
 
 ##--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@st.cache(show_spinner=False, max_entries=1)
+st.cache_resource(show_spinner=False, max_entries=1)
 def transcribe_URL(_model, url):
     
     url_type = verify_url(url)
@@ -74,7 +74,7 @@ def transcribe_URL(_model, url):
         return result
 
 ##--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@st.cache(persist=True,allow_output_mutation=False,show_spinner=True,suppress_st_warning=True)
+st.cache_resource(persist=True,allow_output_mutation=False,show_spinner=True,suppress_st_warning=True)
 
 def verify_url(url):
     youtube_pattern = re.compile(r'^(https?://)?(www\.)?(youtube\.com|youtu\.?be)/.+$')
