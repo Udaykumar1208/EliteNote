@@ -167,7 +167,7 @@ if __name__ == "__main__":
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
 url = col2.text_input("Enter the URL: ")
-col2.warning("Make sure that Google Drive URL can access anyone...")
+col2.warning("Make sure that Google Drive URL can access eveyone and Youtube video must below 30 minuits...")
 col2.button("Submit")
 
 url_type = verify_url(url)
@@ -293,7 +293,7 @@ if url_type == "youtube":
                                                     
 #------------------------------------------------------------Drive URL----------------------------------------------------------------------------------------------
                 else:
-                    st.warning("Sorry, the video has to be shorter than or equal to eight minutes.")
+                    st.warning("Sorry, the video has to be shorter than or equal to thirty minutes.")
             else:
                 st.warning("❎ Invalid YouTube URL.")
     if __name__ == "__main__":
